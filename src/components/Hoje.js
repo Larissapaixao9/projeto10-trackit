@@ -92,7 +92,7 @@ export default function Hoje() {
         return todayHabits.map((habit) => {
             const { id, name, done, currentSequence, highestSequence } = habit;
             return <FazerHabitoEstilo key={id}>
-                <h6>{name}</h6>
+                <h2>{name}</h2>
                 
                 <SectionList>
                 <p>Sequência atual: 
@@ -213,10 +213,12 @@ const FazerHabitoEstilo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    h6 {
+    h2 {
         margin: 13px;
         margin-left: 15px;
         margin-right: 85px;
+        color:#666666;
+        font-family: 'Lexend Deca';
     }
     p {
         margin-left: 15px;

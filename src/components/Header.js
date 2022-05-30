@@ -26,10 +26,10 @@ export default function Header() {
                 <button onClick={SairDoApp}>
                     <div>
 
-                        <h2>S</h2>
-                        <h2>a</h2>
-                        <h2>i</h2>
-                        <h2>r</h2>
+                    <div>s</div>
+                    <div>a</div>
+                    <div>i</div>
+                    <div>r</div>
                         
                     </div>
                 </button>
@@ -59,6 +59,7 @@ const EstiloDoTopo = styled.header`
         font-size: 38.98px;
         margin-left: 15px;
     }
+  
     article {
         display: flex;
         align-items: center;

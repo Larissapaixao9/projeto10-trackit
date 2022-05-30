@@ -86,7 +86,7 @@ export default function Habitos() {
         <Section>
             <Header />
             <Container>
-                <h1>Meus hábitos</h1>
+                <strong><h1>Meus hábitos</h1></strong>
                 <button onClick={() => setCartaoHabitos(!cartaoHabitos)}>+</button>
             </Container>
 

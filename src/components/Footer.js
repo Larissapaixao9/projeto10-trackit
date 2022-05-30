@@ -52,5 +52,7 @@ const TopBottom = styled.div`
         width: 91px;
         height: 91px;
         cursor:pointer;
+        font-family: 'Lexend Deca';
+        font-weight: 400;
     }
 `
