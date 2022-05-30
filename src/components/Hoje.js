@@ -16,7 +16,8 @@ export default function Hoje() {
     //Recebendo o token
     const token = localStorage.getItem("token");
 
-    //Declarando as variaveis de estado
+    //Declarando as variaveis de estado escritas em ingles para impedir confusão com
+    //variáveis de mesmo nome
     const [todayHabits, setTodayHabits] = useState([]);
     const { habitsPercentage, setHabitsPercentage } = useContext(HabitsContext);
     const [teste,setTeste]=React.useState(false);
@@ -30,8 +31,8 @@ export default function Hoje() {
 
     let DiadeHoje = dayjs(now).locale('pt-br').format('dddd, DD/MM');
     let PrimeiraLetra = DiadeHoje[0].toUpperCase();
-    let end = DiadeHoje.slice(1);
-    let today = PrimeiraLetra + end;
+    let final = DiadeHoje.slice(1);
+    let today = PrimeiraLetra + final;
 
     useEffect(() => {
         const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", 
@@ -87,10 +88,10 @@ export default function Hoje() {
         })
     }
 
-    function showTodayList() {
+    function MostrarListaFazer() {
         return todayHabits.map((habit) => {
             const { id, name, done, currentSequence, highestSequence } = habit;
-            return <ToDo key={id}>
+            return <FazerHabitoEstilo key={id}>
                 <h6>{name}</h6>
                 
                 <SectionList>
@@ -107,15 +108,15 @@ export default function Hoje() {
                 </SectionList>
 
                 <ThemeProvider theme={done ? selectedTheme : defaultTheme}>
-                    <Checkbox onClick={() => VerificaroHabito (id, done)}>
+                    <SelecaoEstilo onClick={() => VerificaroHabito (id, done)}>
                         <img src={certinho} alt="Botão checar" />
-                    </Checkbox>
+                    </SelecaoEstilo>
                 </ThemeProvider>
-            </ToDo>
+            </FazerHabitoEstilo>
         })
     }
 
-    const showHabits = showTodayList();
+    const showHabits = MostrarListaFazer();
 
     CalcularPorcentagem();
     
@@ -127,15 +128,15 @@ export default function Hoje() {
                 {habitsPercentage ? <p>{habitsPercentage}% dos hábitos concluídos</p> : <h2>Nenhum hábito concluído ainda</h2>}
             </Container>
 
-            <HabitsList>
+            <ListadeHabitosEstilo>
                 {todayHabits.length > 0 ? showHabits : <h3>Você pode criar uns hábitos bacaninhas lá na página Hábitos</h3>}
-            </HabitsList>
+            </ListadeHabitosEstilo>
             <Footer />
         </Section>
     )
 }
 
-function currentDaysColor(props) {
+function CorDias(props) {
     const { selected } = props;
     if (selected) {
         return selectedTheme.dfColor;
@@ -144,7 +145,7 @@ function currentDaysColor(props) {
     }
 }
 
-function highestDayColor(currentSeq, highestSeq) {
+function Maiorcor(currentSeq, highestSeq) {
     if (highestSeq !== 0) {
         if (currentSeq === highestSeq) {
             return selectedTheme.dfColor;
@@ -192,14 +193,14 @@ const Container = styled.div`
         color: #8FC549;
     }`;
 
-const HabitsList = styled.div`
+const ListadeHabitosEstilo = styled.div`
     margin-bottom: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
-const ToDo = styled.div`
+const FazerHabitoEstilo = styled.div`
     position: relative;
     background-color: #FFFFFF;
     margin-top: 10px;
@@ -227,7 +228,7 @@ const SectionList = styled.div`
     margin-bottom: 13px;
     `;
 
-const Checkbox = styled.div`
+const SelecaoEstilo = styled.div`
     position: absolute;
     right: 10px;
     bottom: 10px;
@@ -257,9 +258,9 @@ const defaultDayColor = {
 };
 
 const SpanHighest = styled.span`
-    color: ${(props) => highestDayColor(props.currentSeq, props.highestSeq)}
+    color: ${(props) => Maiorcor(props.currentSeq, props.highestSeq)}
 `;
 
 const SpanCurrent = styled.span`
-    color: ${(selected) => currentDaysColor(selected)}
+    color: ${(selected) => CorDias(selected)}
 `;

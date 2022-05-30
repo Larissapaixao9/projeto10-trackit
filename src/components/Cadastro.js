@@ -57,12 +57,17 @@ export default function Cadastro(){
 }
 
 const Container = styled.div`
-  
+    margin:16vh auto;
+    align-items:center;
+    display:flex;
+    flex-direction:column;
     input{
         color: #666666;
         border: 1px solid #D4D4D4;
-        width:90%;
-        margin: 0 auto 18px;
+        width:80%;
+        margin-left:6%;
+        margin-rigth:2%;
+        margin-bottom:4%;
         font-size:18px;
         padding:16px;
         border-radius:5px;
@@ -75,15 +80,18 @@ const Container = styled.div`
     img{
         heigth:100%;
         object-fit:cover;
-        margin-left:70px;
     }
     button{
         background-color:#52B6FF;
         color:#fff;
         heigth:48px;
         padding:15px;
-        width:100%;
+        width:90%;
         cursor:pointer;
+        margin-left:6%;
+        margin-rigth:2%;
+        display:flex;
+        justify-content:center;
     }
     p{
         color:#52B6FF;

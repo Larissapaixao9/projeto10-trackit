@@ -9,6 +9,7 @@ import Deletar from "./Deletar";
 import Lixo from "../imagens/Lixo.png";
 
 export default function Habitos() {
+    
     const token = localStorage.getItem("token");
 
     //Variaveis de estado:
@@ -29,10 +30,11 @@ export default function Habitos() {
         promise.then((response) => {
 
             console.log('funfou aqui')
-            const DataServidor=promise.data;
+            const DataServidor=promise.data; 
         
-            const { data } = response;
+            const { data } = response; //Desestruturação de data 
             setRenderizaHabitos(data);
+
             setCallUseEffect(false);
 
             MostrarTodosOsHabitos();
@@ -48,7 +50,7 @@ export default function Habitos() {
     }
 
     function MostrarTodosOsHabitos() {
-        const weekDays = [
+        const DiasdaSemanaLista = [
             { LetraDiaSemana: 'D', number: 0 },
             { LetraDiaSemana: 'S', number: 1 },
             { LetraDiaSemana: 'T', number: 2 },
@@ -68,8 +70,8 @@ export default function Habitos() {
                 </button>
 
                 <section>
-                    {weekDays.map((day, index) => {
-                        return <ThemeProvider theme={days.includes(day.number) ? invertedColor : color} key={index}>
+                    {DiasdaSemanaLista.map((day, index) => {
+                        return <ThemeProvider theme={days.includes(day.number) ? mudarCor : color} key={index}>
                             <Day>{day.LetraDiaSemana}</Day>
                         </ThemeProvider>;
                     })}
@@ -216,7 +218,7 @@ const EstiloHabitos = styled.div`
         dfBack: "#FFFFFF"
     };
 
-    const invertedColor = {
+    const mudarCor = {
         dfColor: "#FFFFFF",
         dfBack: "#D4D4D4"
     };
