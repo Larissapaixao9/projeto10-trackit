@@ -43,6 +43,7 @@ const TopBottom = styled.div`
     font-size: 18px;
     color: #52B6FF;
     display: flex;
+    cursor:pointer;
     justify-content: space-around;
     align-items: center;
     section {
@@ -50,5 +51,6 @@ const TopBottom = styled.div`
         bottom: 15%;
         width: 91px;
         height: 91px;
+        cursor:pointer;
     }
 `
